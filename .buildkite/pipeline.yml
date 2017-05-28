@@ -1,11 +1,11 @@
 steps:
   - label: ":docker: :hammer:"
     plugins:
-      docker-compose#e44e0b6:
+      docker-compose#v1.3.2:
         run: tests
   - wait
   - label: ":docker: :rocket:"
     plugins:
-      docker-compose#e44e0b6:
+      docker-compose#v1.3.2:
         push: release
     branches: master
