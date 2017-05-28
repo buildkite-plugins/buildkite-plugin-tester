@@ -28,7 +28,7 @@ To set up CI, you can create a `.buildkite/pipeline.yml` file and use the [docke
 
 ```yml
 steps:
-  - plugin:
+  - plugins:
       docker-compose#x.y.z:
         run: tests
 ```
