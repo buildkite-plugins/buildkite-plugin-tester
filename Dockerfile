@@ -10,5 +10,8 @@ RUN mkdir -p /usr/local/lib/bats/bats-mock \
 
 RUN apk --no-cache add ncurses
 
+# Expose BATS_PATH so people can easily use load.bash
+ENV BATS_PATH=/usr/local/lib/bats
+
 WORKDIR /plugin
 CMD ["bats", "tests/"]

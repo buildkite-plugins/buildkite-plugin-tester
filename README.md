@@ -9,7 +9,23 @@ Your plugin’s code is expected to be mounted to `/plugin`, and by default the 
 
 ## Usage
 
-Add the following `docker-compose.yml` file to your plugin:
+For example, say your plugin had the following command hook test in `tests/command.bats`:
+
+```bash
+load "$BATS_PATH/load.bash"
+
+# Uncomment to add stub debug information:
+# export FOO_STUB_DEBUG=/dev/tty
+
+@test "calls git log" {
+  stub git "log : echo some-log"
+  git log
+  assert_success
+  unstub git
+}
+```
+
+To use the plugin-tester, add the following `docker-compose.yml` file to your plugin:
 
 ```bash
 version: '2'
@@ -18,13 +34,13 @@ services:
     image: buildkite/plugin-tester
 ```
 
-Test it locally:
+Now you can run it locally:
 
 ```bash
 docker-compose run --rm tests
 ```
 
-To set up CI, you can create a `.buildkite/pipeline.yml` file and use the [docker-compose Buildkite Plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin), for example:
+To set up it up in Buildkite, create a `.buildkite/pipeline.yml` file that uses the [docker-compose Buildkite Plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin), for example:
 
 ```yml
 steps:
