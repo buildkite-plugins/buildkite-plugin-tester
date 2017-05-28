@@ -1,4 +1,12 @@
 steps:
-  - plugins:
+  - label: ":docker: :hammer:"
+    plugins:
       docker-compose#v1.3.1:
         run: tests
+  - wait
+  - label: ":docker: :rocket:"
+    plugins:
+      docker-compose#v1.3.1:
+        push:
+          - release:index.docker.io/buildkite/plugin-tester:latest
+    branches: master
