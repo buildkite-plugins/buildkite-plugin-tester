@@ -6,3 +6,4 @@ services:
       - "./tests/test-plugin:/plugin:ro"
   release:
     build: .
+    image: buildkite/plugin-tester

@@ -5,5 +5,5 @@ steps:
         run: tests
   - wait
   - label: ":docker: :rocket:"
-    command: "docker-compose push release index.docker.io/buildkite/plugin-tester"
+    command: "docker-compose push release"
     branches: master
