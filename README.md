@@ -1,4 +1,4 @@
-# Buildkite Plugin Tester
+# Buildkite Plugin Tester ![Build status](https://badge.buildkite.com/7b010199d2978561ef5f70cf13b2933455f44c2ea56dd7f385.svg)
 
 A base [Docker](https://www.docker.com/) image for testing Buildkite plugins with BATS. It includes:
 
