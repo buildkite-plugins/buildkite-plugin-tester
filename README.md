@@ -1,11 +1,11 @@
 # Buildkite Plugin Tester
 
-A [Docker](https://www.docker.com/) image you can use to help test your Buildkite Plugin. It includes:
+A base [Docker](https://www.docker.com/) image for testing Buildkite plugins with BATS. It includes:
 
 * [bats](https://github.com/sstephenson/bats)
 * [bats-mock](https://github.com/jasonkarns/bats-mock)
 
-It expects plugin code to be mounted to `/plugin`, and by default will run the command `bats tests/`.
+Your plugin’s code is expected to be mounted to `/plugin`, and by default the image will run the command `bats tests/`.
 
 ## Usage
 
