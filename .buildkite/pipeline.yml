@@ -5,5 +5,5 @@ steps:
         run: tests
   - wait
   - label: ":docker: :rocket:"
-    command: "docker-compose push release"
+    command: "docker-compose build release && docker-compose push release"
     branches: master
