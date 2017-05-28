@@ -33,6 +33,14 @@ steps:
         run: tests
 ```
 
+## Developing
+
+To test plugin-tester, use the following command:
+
+```bash
+docker-compose run --rm tests
+```
+
 ## License
 
 MIT (see [LICENSE](LICENSE))
