@@ -12,10 +12,9 @@ Your plugin’s code is expected to be mounted to `/plugin`, and by default the 
 For example, say your plugin had the following command hook test in `tests/command.bats`:
 
 ```bash
-load "$BATS_PATH/load.bash"
+#!/usr/bin/env bats
 
-# Uncomment to add stub debug information:
-# export FOO_STUB_DEBUG=/dev/tty
+load "$BATS_PATH/load.bash"
 
 @test "calls git log" {
   stub git "log : echo some-log"
@@ -32,6 +31,8 @@ version: '2'
 services:
   tests:
     image: buildkite/plugin-tester
+    volumes:
+      - ".:/plugin:ro"
 ```
 
 Now you can run it locally:
