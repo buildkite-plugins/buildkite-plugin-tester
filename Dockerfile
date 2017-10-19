@@ -1,6 +1,6 @@
 FROM lucor/bats
 
-ENV LIBS_BATS_MOCK_VERSION "1.0.1"
+ENV LIBS_BATS_MOCK_VERSION "1.1.0"
 
 RUN mkdir -p /usr/local/lib/bats/bats-mock \
     && curl -sSL https://github.com/lox/bats-mock/archive/master.tar.gz -o /tmp/bats-mock.tgz \
