@@ -10,7 +10,7 @@ Your plugin’s code is expected to be mounted to `/plugin`, and by default the 
 
 ## Usage
 
-For example, say your plugin had a command hook that called `git log`. To test this, you'd create the following test in `tests/command.bats`:
+For example, say your plugin called `foo` took a `commit` option and called `git log` via a command hook. To test this, you'd create the following test in `tests/command.bats`:
 
 ```bash
 #!/usr/bin/env bats
@@ -21,7 +21,9 @@ load "$BATS_PATH/load.bash"
 # export GIT_STUB_DEBUG=/dev/tty
 
 @test "calls git log" {
-  stub git "log : echo git log output"
+  export BUILDKITE_PLUGIN_FOO_COMMIT=abc123
+
+  stub git "log abc123 : echo git log output"
   
   run $PWD/hooks/command
   
