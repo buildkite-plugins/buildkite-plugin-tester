@@ -10,7 +10,27 @@ Your plugin’s code is expected to be mounted to `/plugin`, and by default the 
 
 ## Usage
 
-For example, say your plugin called `foo` took a `commit` option and called `git log` via a command hook. To test this, you'd create the following test in `tests/command.bats`:
+For example, say you had a plugin called `git-logger`, which took a `commit` option, and called `git log` via a command hook:
+
+```yml
+steps:
+  - plugins:
+      foo/git-logger#v1.0.0:
+        commit: "abc123"
+```
+
+To test this, you'd add the following `docker-compose.yml` file:
+
+```yml
+version: '3.4'
+services:
+  tests:
+    image: buildkite/plugin-tester
+    volumes:
+      - ".:/plugin"
+```
+
+And you'd create the following test in `tests/command.bats`:
 
 ```bash
 #!/usr/bin/env bats
@@ -33,24 +53,13 @@ load "$BATS_PATH/load.bash"
 }
 ```
 
-And then add the following `docker-compose.yml` file to your plugin:
-
-```yml
-version: '3.4'
-services:
-  tests:
-    image: buildkite/plugin-tester
-    volumes:
-      - ".:/plugin"
-```
-
 Now you can run your tests locally:
 
 ```bash
 docker-compose run --rm tests
 ```
 
-To set up it up in Buildkite, create a `.buildkite/pipeline.yml` file that uses the [docker-compose Buildkite Plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin), for example:
+To set up it up in Buildkite, create a `.buildkite/pipeline.yml` file that uses the [docker-compose Buildkite Plugin](https://github.com/buildkite-plugins/docker-compose-buildkite-plugin) to run that same command on CI, for example:
 
 ```yml
 steps:
