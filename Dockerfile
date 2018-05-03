@@ -1,4 +1,4 @@
-FROM lucor/bats
+FROM lucor/bats:latest@sha256:88cf23ca5cd5451d9a88967fd17d4b2fb35b37c5662d2ed4b59fc4039aad2f0d
 
 ENV LIBS_BATS_MOCK_VERSION "1.1.0"
 
