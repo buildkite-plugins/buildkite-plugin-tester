@@ -2,7 +2,5 @@
   "extends": [
     "config:base"
   ],
-  "docker-compose": {
-    "pinVersions": false
-  }
+  "pinVersions": false
 }
