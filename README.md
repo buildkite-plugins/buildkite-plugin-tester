@@ -32,7 +32,7 @@ load "$BATS_PATH/load.bash"
 
 And then add the following `docker-compose.yml` file to your plugin:
 
-```bash
+```yml
 version: '3.4'
 services:
   tests:
