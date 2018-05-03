@@ -33,7 +33,7 @@ load "$BATS_PATH/load.bash"
 And then add the following `docker-compose.yml` file to your plugin:
 
 ```bash
-version: '2'
+version: '3.4'
 services:
   tests:
     image: buildkite/plugin-tester
