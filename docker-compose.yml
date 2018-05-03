@@ -6,4 +6,4 @@ services:
       - "./tests/test-plugin:/plugin"
   release:
     build: .
-    image: buildkite/plugin-tester:latest
+    image: buildkite/plugin-tester:latest@sha256:5677a6f0fbd23ad739bbd5b1b6d9669d0276b9f6669a5befcd50a9b7f9512650
