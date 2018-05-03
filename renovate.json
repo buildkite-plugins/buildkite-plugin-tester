@@ -3,6 +3,6 @@
     "config:base"
   ],
   "docker-compose": {
-    "pinDependencies": false
+    "pinVersions": false
   }
 }
