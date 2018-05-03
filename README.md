@@ -3,7 +3,8 @@
 A base [Docker](https://www.docker.com/) image for testing [Buildkite plugins](https://buildkite.com/docs/agent/v3/plugins) with BATS. It includes:
 
 * [bats](https://github.com/sstephenson/bats)
-* [bats-mock](https://github.com/jasonkarns/bats-mock)
+* [bats-assert](https://github.com/ztombol/bats-assert)
+* [bats-mock](https://github.com/lox/bats-mock)
 
 Your plugin’s code is expected to be mounted to `/plugin`, and by default the image will run the command `bats tests/`.
 
