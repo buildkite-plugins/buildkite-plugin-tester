@@ -9,22 +9,28 @@ Your plugin’s code is expected to be mounted to `/plugin`, and by default the 
 
 ## Usage
 
-For example, say your plugin had the following command hook test in `tests/command.bats`:
+For example, say your plugin had a command hook that called `git log`. To test this, you'd create the following test in `tests/command.bats`:
 
 ```bash
 #!/usr/bin/env bats
 
 load "$BATS_PATH/load.bash"
 
+# Uncomment to enable stub debugging
+# export GIT_STUB_DEBUG=/dev/tty
+
 @test "calls git log" {
-  stub git "log : echo some-log"
-  git log
+  stub git "log : echo git log output"
+  
+  run $PWD/hooks/command
+  
+  assert_output --partial "git log output"
   assert_success
   unstub git
 }
 ```
 
-To use the plugin-tester, add the following `docker-compose.yml` file to your plugin:
+And then add the following `docker-compose.yml` file to your plugin:
 
 ```bash
 version: '2'
@@ -32,10 +38,10 @@ services:
   tests:
     image: buildkite/plugin-tester
     volumes:
-      - ".:/plugin:ro"
+      - ".:/plugin"
 ```
 
-Now you can run it locally:
+Now you can run your tests locally:
 
 ```bash
 docker-compose run --rm tests
@@ -52,7 +58,7 @@ steps:
 
 ## Developing
 
-To test plugin-tester, use the following command:
+To test plugin-tester itself, use the following command:
 
 ```bash
 docker-compose run --rm tests
