@@ -41,7 +41,7 @@ load "$BATS_PATH/load.bash"
 # export GIT_STUB_DEBUG=/dev/tty
 
 @test "calls git log" {
-  export BUILDKITE_PLUGIN_FOO_COMMIT=abc123
+  export BUILDKITE_PLUGIN_GIT_LOGGER_COMMIT="abc123"
 
   stub git "log abc123 : echo git log output"
   
