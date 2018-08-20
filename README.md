@@ -2,9 +2,9 @@
 
 A base [Docker](https://www.docker.com/) image for testing [Buildkite plugins](https://buildkite.com/docs/agent/v3/plugins) with BATS. It includes:
 
-* [bats](https://github.com/sstephenson/bats)
+* [bats-core](https://github.com/bats-core/bats-core)
 * [bats-assert](https://github.com/ztombol/bats-assert)
-* [bats-mock](https://github.com/lox/bats-mock)
+* [@lox](https://github.com/lox)'s fork of [bats-mock](https://github.com/lox/bats-mock)
 
 Your plugin’s code is expected to be mounted to `/plugin`, and by default the image will run the command `bats tests/`.
 
@@ -44,9 +44,9 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_GIT_LOGGER_COMMIT="abc123"
 
   stub git "log abc123 : echo git log output"
-  
+
   run $PWD/hooks/command
-  
+
   assert_output --partial "git log output"
   assert_success
   unstub git
