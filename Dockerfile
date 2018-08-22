@@ -26,6 +26,11 @@ RUN mkdir -p /usr/local/lib/bats/bats-mock \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-mock/stub.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-mock.tgz
 
+# Make sure /bin/bash is available, as bats/bats only has it at
+# /usr/local/bin/bash and many plugin hooks (and shellscripts in general) use
+# `#!/bin/bash` as their shebang
+RUN if [[ -e /bin/bash ]]; then echo "/bin/bash already exists"; exit 1; else ln -s /usr/local/bin/bash /bin/bash; fi
+
 # Expose BATS_PATH so people can easily use load.bash
 ENV BATS_PATH=/usr/local/lib/bats
 
