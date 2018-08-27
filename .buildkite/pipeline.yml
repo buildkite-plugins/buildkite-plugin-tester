@@ -6,6 +6,7 @@ steps:
   - wait
   - label: ":docker: :rocket:"
     plugins:
+      docker-login#v2.0.1: ~
       docker-compose#v2.5.1:
         push: release
     branches: master
