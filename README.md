@@ -15,8 +15,8 @@ For example, say you had a plugin called `git-logger`, which took a `commit` opt
 ```yml
 steps:
   - plugins:
-      foo/git-logger#v1.0.0:
-        commit: "abc123"
+      - foo/git-logger#v1.0.0:
+          commit: "abc123"
 ```
 
 To test this, you'd add the following `docker-compose.yml` file:
@@ -64,8 +64,8 @@ To set up it up in Buildkite, create a `.buildkite/pipeline.yml` file that uses 
 ```yml
 steps:
   - plugins:
-      docker-compose#x.y.z:
-        run: tests
+      - docker-compose#x.y.z:
+          run: tests
 ```
 
 ## Developing
