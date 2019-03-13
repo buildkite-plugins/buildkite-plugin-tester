@@ -76,6 +76,10 @@ To test plugin-tester itself, use the following command:
 docker-compose run --rm tests
 ```
 
+## Releasing
+
+* Master is built and tested automatically, and pushes a new image to [buildkite/plugin-tester on Docker Hub](https://hub.docker.com/r/buildkite/plugin-tester)
+
 ## License
 
 MIT (see [LICENSE](LICENSE))
