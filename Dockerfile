@@ -3,7 +3,7 @@ FROM bats/bats:latest@sha256:97d91ee0aa9771e696cdf44c2b1672af484fd846eaf52ba2db6
 ENV LIBS_BATS_MOCK_VERSION="1.1.0" \
     LIBS_BATS_SUPPORT_VERSION="0.3.0"
 
-RUN apk --no-cache add ncurses curl
+RUN apk --no-cache add ncurses curl jq
 
 # Install bats-support
 RUN mkdir -p /usr/local/lib/bats/bats-support \
