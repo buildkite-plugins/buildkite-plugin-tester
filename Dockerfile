@@ -1,4 +1,4 @@
-FROM bats/bats:latest@sha256:97d91ee0aa9771e696cdf44c2b1672af484fd846eaf52ba2db6061f5c78a89d5
+FROM bats/bats:1.2.1@sha256:2defd45426be3b5bc7415455ca529c910dab7473717eeece9c3cc26efa5ca037
 
 ENV LIBS_BATS_MOCK_VERSION="1.1.0" \
     LIBS_BATS_SUPPORT_VERSION="0.3.0"
@@ -32,7 +32,7 @@ RUN mkdir -p /usr/local/lib/bats/bats-mock \
 RUN if [[ -e /bin/bash ]]; then echo "/bin/bash already exists"; exit 1; else ln -s /usr/local/bin/bash /bin/bash; fi
 
 # Expose BATS_PATH so people can easily use load.bash
-ENV BATS_PATH=/usr/local/lib/bats
+ENV BATS_PLUGIN_PATH=/usr/local/lib/bats
 
 WORKDIR /plugin
 
