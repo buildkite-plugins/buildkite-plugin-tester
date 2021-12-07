@@ -26,6 +26,13 @@ RUN mkdir -p /usr/local/lib/bats/bats-mock \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-mock/stub.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-mock.tgz
 
+# Install bats-file
+RUN mkdir -p /usr/local/lib/bats/bats-file \
+    && curl -sSL https://github.com/bats-core/bats-file/archive/v0.3.0.tar.gz -o /tmp/bats-file.tgz \
+    && tar -zxf /tmp/bats-file.tgz -C /usr/local/lib/bats/bats-file --strip 1 \
+    && printf 'source "%s"\n' "/usr/local/lib/bats/bats-file/load.bash" >> /usr/local/lib/bats/load.bash \
+    && rm -rf /tmp/bats-file.tgz
+
 # Make sure /bin/bash is available, as bats/bats only has it at
 # /usr/local/bin/bash and many plugin hooks (and shellscripts in general) use
 # `#!/bin/bash` as their shebang
