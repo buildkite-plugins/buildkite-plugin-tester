@@ -1,6 +1,6 @@
 FROM bats/bats:latest@sha256:97d91ee0aa9771e696cdf44c2b1672af484fd846eaf52ba2db6061f5c78a89d5
 
-ENV LIBS_BATS_MOCK_VERSION="1.1.0" \
+ENV LIBS_BATS_MOCK_VERSION="1.3.0" \
     LIBS_BATS_SUPPORT_VERSION="0.3.0"
 
 RUN apk --no-cache add ncurses curl jq
@@ -21,7 +21,7 @@ RUN mkdir -p /usr/local/lib/bats/bats-assert \
 
 # Install lox's fork of bats-mock
 RUN mkdir -p /usr/local/lib/bats/bats-mock \
-    && curl -sSL https://github.com/lox/bats-mock/archive/v1.3.0.tar.gz -o /tmp/bats-mock.tgz \
+    && curl -sSL https://github.com/lox/bats-mock/archive/v${LIBS_BATS_MOCK_VERSION}.tar.gz -o /tmp/bats-mock.tgz \
     && tar -zxf /tmp/bats-mock.tgz -C /usr/local/lib/bats/bats-mock --strip 1 \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-mock/stub.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-mock.tgz
