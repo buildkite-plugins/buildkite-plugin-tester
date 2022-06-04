@@ -9,4 +9,4 @@ steps:
       docker-login#v2.1.0: ~
       docker-compose#v3.9.0:
         push: release
-    branches: master
+    branches: main
