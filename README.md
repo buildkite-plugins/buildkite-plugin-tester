@@ -1,10 +1,11 @@
-# Buildkite Plugin Tester [![Build status](https://badge.buildkite.com/f6ce96d897af406221809efe925c0808cc49cdcf5b91771ce0.svg?branch=master)](https://buildkite.com/buildkite/plugin-tester)
+# Buildkite Plugin Tester [![Build status](https://badge.buildkite.com/f6ce96d897af406221809efe925c0808cc49cdcf5b91771ce0.svg?branch=main)](https://buildkite.com/buildkite/plugin-tester)
 
 A base [Docker](https://www.docker.com/) image for testing [Buildkite plugins](https://buildkite.com/docs/agent/v3/plugins) with BATS. It includes:
 
 * [bats-core](https://github.com/bats-core/bats-core)
-* [bats-assert](https://github.com/ztombol/bats-assert)
-* [@lox](https://github.com/lox)'s fork of [bats-mock](https://github.com/lox/bats-mock)
+* [bats-support](https://github.com/bats-core/bats-support)
+* [bats-assert](https://github.com/bats-core/bats-assert)
+* [bats-mock](https://github.com/lox/bats-mock)
 
 Your plugin’s code is expected to be mounted to `/plugin`, and by default the image will run the command `bats tests/`.
 
@@ -35,7 +36,7 @@ And you'd create the following test in `tests/command.bats`:
 ```bash
 #!/usr/bin/env bats
 
-load "$BATS_PATH/load.bash"
+load "$BATS_PLUGIN_PATH/load.bash"
 
 # Uncomment to enable stub debugging
 # export GIT_STUB_DEBUG=/dev/tty
