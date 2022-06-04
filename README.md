@@ -35,7 +35,7 @@ And you'd create the following test in `tests/command.bats`:
 ```bash
 #!/usr/bin/env bats
 
-load "$BATS_PATH/load.bash"
+load "$BATS_PLUGIN_PATH/load.bash"
 
 # Uncomment to enable stub debugging
 # export GIT_STUB_DEBUG=/dev/tty
