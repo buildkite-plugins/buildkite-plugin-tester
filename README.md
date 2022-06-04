@@ -37,10 +37,12 @@ And you'd create the following test in `tests/command.bats`:
 ```bash
 #!/usr/bin/env bats
 
-load "$BATS_PLUGIN_PATH/load.bash"
+setup() {
+  load "$BATS_PLUGIN_PATH/load.bash"
 
-# Uncomment to enable stub debugging
-# export GIT_STUB_DEBUG=/dev/tty
+  # Uncomment to enable stub debugging
+  # export GIT_STUB_DEBUG=/dev/tty
+}
 
 @test "calls git log" {
   export BUILDKITE_PLUGIN_GIT_LOGGER_COMMIT="abc123"
@@ -80,7 +82,7 @@ docker-compose run --rm tests
 
 ## Releasing
 
-* Master is built and tested automatically, and pushes a new image to [buildkite/plugin-tester on Docker Hub](https://hub.docker.com/r/buildkite/plugin-tester)
+* main is built and tested automatically, and pushes a new image to [buildkite/plugin-tester on Docker Hub](https://hub.docker.com/r/buildkite/plugin-tester)
 
 ## License
 
