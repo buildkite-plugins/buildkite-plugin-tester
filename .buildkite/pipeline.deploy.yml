@@ -3,10 +3,21 @@ steps:
     plugins:
       docker-compose#v3.9.0:
         run: tests
+
   - wait
-  - label: ":docker: :rocket:"
+
+  - label: ":docker: :rocket: Latest"
     plugins:
       docker-login#v2.1.0: ~
       docker-compose#v3.9.0:
-        push: release
-    branches: main
+        push: latest
+    if: |
+      build.branch == 'main'
+
+  - label: ":docker: :rocket: Tag"
+    plugins:
+      docker-login#v2.1.0: ~
+      docker-compose#v3.9.0:
+        push: tag
+    if: |
+      build.tag != null
