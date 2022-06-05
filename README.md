@@ -80,6 +80,11 @@ To test plugin-tester itself, use the following command:
 docker-compose run --rm tests
 ```
 
+## Releasing
+
+1. Create a [new GitHub Release](https://github.com/buildkite-plugins/buildkite-plugin-tester/releases/new). Docker Hub images are automatically pushed when the new tag is created.
+2. Update the [README.md](https://github.com/buildkite-plugins/buildkite-plugin-tester/edit/main/README.md) example line’s version number (`image: buildkite/plugin-tester#vX.Y.Z`)
+
 ## License
 
 MIT (see [LICENSE](LICENSE))
