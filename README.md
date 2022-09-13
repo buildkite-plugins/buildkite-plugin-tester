@@ -5,7 +5,7 @@ A base [Docker](https://www.docker.com/) image for testing [Buildkite plugins](h
 * [bats-core](https://github.com/bats-core/bats-core)
 * [bats-support](https://github.com/bats-core/bats-support)
 * [bats-assert](https://github.com/bats-core/bats-assert)
-* [bats-mock](https://github.com/lox/bats-mock)
+* [bats-mock](https://github.com/buildkite-plugins/bats-mock)
 * [bats-file](https://github.com/bats-core/bats-file)
 
 Your plugin’s code is expected to be mounted to `/plugin`, and by default the image will run the command `bats tests/`.
