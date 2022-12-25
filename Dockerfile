@@ -1,4 +1,4 @@
-FROM bats/bats:latest@sha256:c707c5b7f9afd49da3e8a94248b03832e8b427f1b8f1ae9ec3cfdc5596d9c9f4
+FROM bats/bats:latest@sha256:c3db40540a4942497a8c7ca1ea9fbbf2faf269381f2761380c29154edf5526c4
 
 RUN apk --no-cache add ncurses curl jq
 
