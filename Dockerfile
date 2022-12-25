@@ -11,7 +11,7 @@ RUN mkdir -p /usr/local/lib/bats/bats-support \
 
 # Install bats-assert
 RUN mkdir -p /usr/local/lib/bats/bats-assert \
-    && curl -sSL https://github.com/bats-core/bats-assert/archive/v0.3.0.tar.gz -o /tmp/bats-assert.tgz \
+    && curl -sSL https://github.com/bats-core/bats-assert/archive/v2.1.0.tar.gz -o /tmp/bats-assert.tgz \
     && tar -zxf /tmp/bats-assert.tgz -C /usr/local/lib/bats/bats-assert --strip 1 \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-assert/load.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-assert.tgz
