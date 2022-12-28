@@ -9,7 +9,7 @@ load "$BATS_PLUGIN_PATH/load.bash"
   assert_success
 }
 
-@test "bats intentional failure - Not AOK" {
+@test "bats intentional failure - expects Not AOK" {
   run bash -c "echo 'Not AOK!'; exit 1"
   assert_failure
 }
