@@ -1,5 +1,4 @@
-# syntax=docker/dockerfile:1
-FROM bats/bats:1.8.2-no-faccessat2@sha256:ed084f4b241c7e43422ff0a1d624a3a9609ef804ac8953449d2da63d6b8246e0
+FROM bats/bats:1.8.2-no-faccessat2@sha256:ab8b147d6fd604a25872580db473a61d446370af00addfe0a0d8b4394eae0f6b
 
 RUN apk --no-cache add ncurses curl jq
 
