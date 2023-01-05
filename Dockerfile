@@ -1,4 +1,4 @@
-FROM bats/bats:latest@sha256:c707c5b7f9afd49da3e8a94248b03832e8b427f1b8f1ae9ec3cfdc5596d9c9f4
+FROM bats/bats:1.8.2-no-faccessat2@sha256:ab8b147d6fd604a25872580db473a61d446370af00addfe0a0d8b4394eae0f6b
 
 RUN apk --no-cache add ncurses curl jq
 
@@ -11,14 +11,14 @@ RUN mkdir -p /usr/local/lib/bats/bats-support \
 
 # Install bats-assert
 RUN mkdir -p /usr/local/lib/bats/bats-assert \
-    && curl -sSL https://github.com/bats-core/bats-assert/archive/v0.3.0.tar.gz -o /tmp/bats-assert.tgz \
+    && curl -sSL https://github.com/bats-core/bats-assert/archive/v2.1.0.tar.gz -o /tmp/bats-assert.tgz \
     && tar -zxf /tmp/bats-assert.tgz -C /usr/local/lib/bats/bats-assert --strip 1 \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-assert/load.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-assert.tgz
 
 # Install lox's fork of bats-mock
 RUN mkdir -p /usr/local/lib/bats/bats-mock \
-    && curl -sSL https://github.com/buildkite-plugins/bats-mock/archive/v2.0.1.tar.gz -o /tmp/bats-mock.tgz \
+    && curl -sSL https://github.com/buildkite-plugins/bats-mock/archive/v2.1.0.tar.gz -o /tmp/bats-mock.tgz \
     && tar -zxf /tmp/bats-mock.tgz -C /usr/local/lib/bats/bats-mock --strip 1 \
     && printf 'source "%s"\n' "/usr/local/lib/bats/bats-mock/stub.bash" >> /usr/local/lib/bats/load.bash \
     && rm -rf /tmp/bats-mock.tgz

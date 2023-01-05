@@ -24,7 +24,7 @@ steps:
 To test this, you'd add the following `docker-compose.yml` file:
 
 ```yml
-version: '3.4'
+version: '3.7'
 services:
   tests:
     image: buildkite/plugin-tester:v3.0.1
