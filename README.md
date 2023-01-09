@@ -27,7 +27,7 @@ To test this, you'd add the following `docker-compose.yml` file:
 version: '3.7'
 services:
   tests:
-    image: buildkite/plugin-tester:v3.0.1
+    image: buildkite/plugin-tester:v4.0.0
     volumes:
       - ".:/plugin"
 ```
