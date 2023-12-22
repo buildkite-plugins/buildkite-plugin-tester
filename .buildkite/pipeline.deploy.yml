@@ -8,7 +8,7 @@ steps:
 
   - label: ":docker: :rocket: Latest"
     plugins:
-      docker-login#v2.2.0: ~
+      docker-login#v3.0.0: ~
       docker-compose#v4.16.0:
         push: latest
     if: |
@@ -16,7 +16,7 @@ steps:
 
   - label: ":docker: :rocket: Tag"
     plugins:
-      docker-login#v2.2.0: ~
+      docker-login#v3.0.0: ~
       docker-compose#v4.16.0:
         push: tag
     if: |
