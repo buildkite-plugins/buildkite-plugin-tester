@@ -7,7 +7,7 @@ ENV BATS_PLUGIN_PATH=/usr/lib/bats
 
 # Install our fork of bats-mock
 RUN mkdir -p "${BATS_PLUGIN_PATH}"/bats-mock \
-    && curl -sSL https://github.com/buildkite-plugins/bats-mock/archive/v2.1.0.tar.gz -o /tmp/bats-mock.tgz \
+    && curl -sSL https://github.com/buildkite-plugins/bats-mock/archive/v2.1.1.tar.gz -o /tmp/bats-mock.tgz \
     && tar -zxf /tmp/bats-mock.tgz -C "${BATS_PLUGIN_PATH}"/bats-mock --strip 1 \
     && rm -rf /tmp/bats-mock.tgz
 
