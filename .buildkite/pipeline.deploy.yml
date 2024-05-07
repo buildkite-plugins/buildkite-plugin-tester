@@ -10,6 +10,7 @@ steps:
     plugins:
       docker-login#v3.0.0: ~
       docker-compose#v5.2.0:
+        build: latest
         push: latest
     if: |
       build.branch == 'main'
@@ -18,6 +19,7 @@ steps:
     plugins:
       docker-login#v3.0.0: ~
       docker-compose#v5.2.0:
+        build: tag
         push: tag
     if: |
       build.tag != null
