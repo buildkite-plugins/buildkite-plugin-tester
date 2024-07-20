@@ -1,7 +1,7 @@
 steps:
   - label: ":docker: :hammer:"
     plugins:
-      docker-compose#v5.2.0:
+      docker-compose#v5.3.0:
         run: tests
 
   - wait
@@ -9,7 +9,7 @@ steps:
   - label: ":docker: :rocket: Latest"
     plugins:
       docker-login#v3.0.0: ~
-      docker-compose#v5.2.0:
+      docker-compose#v5.3.0:
         build: latest
         push: latest
     if: |
@@ -18,7 +18,7 @@ steps:
   - label: ":docker: :rocket: Tag"
     plugins:
       docker-login#v3.0.0: ~
-      docker-compose#v5.2.0:
+      docker-compose#v5.3.0:
         build: tag
         push: tag
     if: |
