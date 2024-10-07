@@ -8,18 +8,30 @@ steps:
 
   - label: ":docker: :rocket: Latest"
     plugins:
-      docker-login#v3.0.0: ~
-      docker-compose#v5.4.0:
-        build: latest
-        push: latest
+      - aws-assume-role-with-web-identity:
+          role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
+      - aws-ssm#v1.0.0:
+          parameters:
+            BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
+            DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
+      - docker-login#v3.0.0: ~
+      - docker-compose#v5.4.0:
+          build: latest
+          push: latest
     if: |
       build.branch == 'main'
 
   - label: ":docker: :rocket: Tag"
     plugins:
-      docker-login#v3.0.0: ~
-      docker-compose#v5.4.0:
-        build: tag
-        push: tag
+      - aws-assume-role-with-web-identity:
+          role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
+      - aws-ssm#v1.0.0:
+          parameters:
+            BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
+            DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
+      - docker-login#v3.0.0: ~
+      - docker-compose#v5.4.0:
+          build: tag
+          push: tag
     if: |
       build.tag != null
