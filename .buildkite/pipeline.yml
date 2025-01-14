@@ -1,5 +1,5 @@
 steps:
   - label: ":docker: :hammer:"
     plugins:
-      docker-compose#v5.5.0:
+      docker-compose#v5.6.0:
         run: tests
