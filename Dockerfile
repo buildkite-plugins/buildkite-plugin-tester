@@ -17,12 +17,6 @@ RUN printf 'source "%s"\n' "${BATS_PLUGIN_PATH}/bats-assert/load.bash" >> "${BAT
     && printf 'source "%s"\n' "${BATS_PLUGIN_PATH}/bats-file/load.bash" >> "${BATS_PLUGIN_PATH}"/load.bash \
     && printf 'source "%s"\n' "${BATS_PLUGIN_PATH}/bats-support/load.bash" >> "${BATS_PLUGIN_PATH}"/load.bash
 
-# Make sure /bin/bash is available, as bats/bats only has it at
-# /usr/local/bin/bash and many plugin hooks (and shellscripts in general) use
-# `#!/bin/bash` as their shebang
-RUN if [[ -e /bin/bash ]]; then echo "/bin/bash already exists"; exit 1; else ln -s /usr/local/bin/bash /bin/bash; fi
-
-
 WORKDIR /plugin
 
 ENTRYPOINT []
