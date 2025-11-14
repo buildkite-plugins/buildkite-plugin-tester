@@ -1,7 +1,7 @@
 steps:
   - label: ":docker: :hammer:"
     plugins:
-      docker-compose#v5.12.0:
+      docker-compose#v5.12.1:
         run: tests
 
   - wait
@@ -20,7 +20,7 @@ steps:
             BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
             DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
       - docker-login#v3.0.0: ~
-      - docker-compose#v5.12.0:
+      - docker-compose#v5.12.1:
           build: latest
           push: latest
     if: |
@@ -40,7 +40,7 @@ steps:
             BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
             DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
       - docker-login#v3.0.0: ~
-      - docker-compose#v5.12.0:
+      - docker-compose#v5.12.1:
           build: tag
           push: tag
     if: |
