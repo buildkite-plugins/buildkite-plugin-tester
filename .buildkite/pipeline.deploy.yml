@@ -7,6 +7,18 @@ steps:
   - wait
 
   - label: ":docker: :rocket: Latest"
+    agents:
+      queue: hosted
+    command: |
+      image="buildkite/plugin-tester:latest"
+
+      docker buildx build \
+        --platform linux/amd64,linux/arm64 \
+        --tag "$${image}" \
+        --push \
+        .
+
+      docker buildx imagetools inspect "$${image}"
     plugins:
       - aws-assume-role-with-web-identity#v1.8.0:
           role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
@@ -20,13 +32,22 @@ steps:
             BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
             DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
       - docker-login#v3.1.0: ~
-      - docker-compose#v5.15.0:
-          build: latest
-          push: latest
     if: |
       build.branch == 'main'
 
   - label: ":docker: :rocket: Tag"
+    agents:
+      queue: hosted
+    command: |
+      image="buildkite/plugin-tester:$${BUILDKITE_TAG}"
+
+      docker buildx build \
+        --platform linux/amd64,linux/arm64 \
+        --tag "$${image}" \
+        --push \
+        .
+
+      docker buildx imagetools inspect "$${image}"
     plugins:
       - aws-assume-role-with-web-identity#v1.8.0:
           role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
@@ -40,8 +61,5 @@ steps:
             BUILDKITE_PLUGIN_DOCKER_LOGIN_USERNAME: /pipelines/buildkite/plugin-tester-deploy/docker-login-username
             DOCKER_LOGIN_PASSWORD: /pipelines/buildkite/plugin-tester-deploy/docker-login-password
       - docker-login#v3.1.0: ~
-      - docker-compose#v5.15.0:
-          build: tag
-          push: tag
     if: |
       build.tag != null
