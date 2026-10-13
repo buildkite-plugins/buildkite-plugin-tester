@@ -22,6 +22,7 @@ steps:
     plugins:
       - aws-assume-role-with-web-identity#v1.8.0:
           role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
+          region: us-east-1
           session-tags:
             - organization_slug
             - organization_id
@@ -51,6 +52,7 @@ steps:
     plugins:
       - aws-assume-role-with-web-identity#v1.8.0:
           role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-plugin-tester-deploy
+          region: us-east-1
           session-tags:
             - organization_slug
             - organization_id
