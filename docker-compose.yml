@@ -4,9 +4,3 @@ services:
     build: .
     volumes:
       - "./tests/test-plugin:/plugin"
-  latest:
-    build: .
-    image: buildkite/plugin-tester:latest
-  tag:
-    build: .
-    image: "buildkite/plugin-tester:${BUILDKITE_TAG}"
