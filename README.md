@@ -72,6 +72,20 @@ steps:
           run: tests
 ```
 
+## Container runtime compatibility
+
+The image now uses the standard Bats 1.14.0 image on Alpine 3.24, replacing the
+`no-faccessat2` variant on Alpine 3.12. Bats remains at the same version, but Bash
+and other system packages are newer. The system certificate store is updated to
+include the eMudhra CA compromise remediation before downloading dependencies.
+
+The legacy workaround for old container runtimes has been removed. Use a
+maintained Docker/container runtime and libseccomp configuration. Older runtimes
+that incorrectly block the `faccessat2` system call can cause Bats to report
+`BATS_TMPDIR (/tmp) is not writable`, even when directory permissions are correct.
+Upgrade the host runtime rather than disabling seccomp or using privileged mode.
+For Docker-in-Docker, check both the outer and inner runtimes.
+
 ## Developing
 
 To test plugin-tester itself, use the following command:
